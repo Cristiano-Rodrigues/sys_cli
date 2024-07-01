@@ -52,10 +52,10 @@ public class Patient {
     }
 
     public boolean cadastrarPaciente () {
-        Connection conn = MySQLConnection.getConnection();
-        PatientRepository patient = new PatientRepository(conn);
-
         try {
+            Connection conn = MySQLConnection.getConnection();
+            PatientRepository patient = new PatientRepository(conn);
+
             patient.create(this);
 
             return true;
