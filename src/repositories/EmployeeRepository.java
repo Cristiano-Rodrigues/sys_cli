@@ -18,7 +18,7 @@ public class EmployeeRepository {
     public int create (Employee emp) {
         try {
             String sql = "INSERT INTO funcionario (nome, cargo, salario, data_contratacao) VALUES (?, ?, ?, ?)";
-            PreparedStatement  stmt = this.conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = this.conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             Date date = Date.valueOf(emp.getDate());
 
             stmt.setString(1, emp.getName());
