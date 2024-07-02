@@ -2,10 +2,10 @@ package repositories;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 import controllers.Patient;
-
 
 public class PatientRepository {
     private Connection conn = null;
@@ -31,6 +31,27 @@ public class PatientRepository {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Insercao nao foi bem sucedida");
+        }
+    }
+
+    public Patient getById (int id) {
+        try {
+            String sql = "SELECT * FROM paciente WHERE id =?";
+            PreparedStatement stmt = this.conn.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+
+            return new Patient(
+                rs.getString("nome"),
+                rs.getDate("data_nasc").toLocalDate(),
+                rs.getString("endereco"),
+                rs.getString("telefone")
+            );
+        } catch (SQLException e) {
+            return null;
         }
     }
 }

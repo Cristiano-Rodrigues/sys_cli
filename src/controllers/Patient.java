@@ -2,7 +2,6 @@ package controllers;
 
 import java.sql.Connection;
 import java.time.LocalDate;
-
 import repositories.MySQLConnection;
 import repositories.PatientRepository;
 
@@ -17,6 +16,19 @@ public class Patient {
         this.born = date;
         this.address = address;
         this.phone = phone;
+    }
+
+    public boolean cadastrarPaciente () {
+        try {
+            Connection conn = MySQLConnection.getConnection();
+            PatientRepository patient = new PatientRepository(conn);
+
+            patient.create(this);
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public String getName() {
@@ -49,18 +61,5 @@ public class Patient {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public boolean cadastrarPaciente () {
-        try {
-            Connection conn = MySQLConnection.getConnection();
-            PatientRepository patient = new PatientRepository(conn);
-
-            patient.create(this);
-
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
     }
 }

@@ -28,4 +28,12 @@ public class Doctor extends Employee {
             return false;
         }
     }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
 }

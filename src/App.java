@@ -1,11 +1,16 @@
+import java.sql.Connection;
 import controllers.Specialty;
+import repositories.MySQLConnection;
+import repositories.SpecialtyRepository;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Specialty spec = new Specialty("Teste", "Teste", 320000.0);
+        Connection conn = MySQLConnection.getConnection();
+        SpecialtyRepository specRepository = new SpecialtyRepository(conn);
+        Specialty spec = specRepository.getById(4);
 
-        if (spec.cadastrarEspecialidade()) {
-            System.out.println("Especialidade cadastrada");
+        if (spec != null) {
+            System.out.println("Nome: " + spec.getName() + ", preco: " + spec.getPrice());
         } else {
             System.out.println("Algo correu mal");
         }

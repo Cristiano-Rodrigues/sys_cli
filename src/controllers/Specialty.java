@@ -5,13 +5,13 @@ import repositories.MySQLConnection;
 import repositories.SpecialtyRepository;
 
 public class Specialty {
-    String nome;
-    String descricao;
+    String name;
+    String description;
     Double price;
 
-    public Specialty (String nome, String descricao, Double price) {
-        this.nome = nome;
-        this.descricao = descricao;
+    public Specialty (String name, String description, Double price) {
+        this.name = name;
+        this.description = description;
         this.price = price;
     }
 
@@ -28,20 +28,20 @@ public class Specialty {
         }
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getPrice() {
