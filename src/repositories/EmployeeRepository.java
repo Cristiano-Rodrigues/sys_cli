@@ -14,7 +14,6 @@ public class EmployeeRepository {
         this.conn = conn;
     }
 
-
     public int create (Employee emp) {
         try {
             String sql = "INSERT INTO funcionario (nome, cargo, salario, data_contratacao) VALUES (?, ?, ?, ?)";

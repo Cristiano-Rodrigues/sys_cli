@@ -1,13 +1,11 @@
-import java.time.LocalDate;
-
-import controllers.Doctor;
+import controllers.Specialty;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Doctor doc = new Doctor("Abigail", "Ginecologista", 3000000.0, LocalDate.of(2022, 05, 12), "1001");
+        Specialty spec = new Specialty("Teste", "Teste", 320000.0);
 
-        if (doc.cadastrarMedico()) {
-            System.out.println("Medico cadastrado");
+        if (spec.cadastrarEspecialidade()) {
+            System.out.println("Especialidade cadastrada");
         } else {
             System.out.println("Algo correu mal");
         }

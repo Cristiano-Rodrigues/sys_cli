@@ -6,6 +6,31 @@ import repositories.EmployeeRepository;
 import repositories.MySQLConnection;
 
 public class Employee {
+    String name;
+    String role;
+    Double salary;
+    LocalDate date;
+
+    public Employee (String name, String role, Double salary, LocalDate date) {
+        this.name = name;
+        this.role = role;
+        this.salary = salary;
+        this.date = date;
+    }
+
+    public boolean cadastrarFuncionario () {
+        try {
+            Connection conn = MySQLConnection.getConnection();
+            EmployeeRepository emp = new EmployeeRepository(conn);
+            
+            emp.create(this);
+
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -36,30 +61,5 @@ public class Employee {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    String name;
-    String role;
-    Double salary;
-    LocalDate date;
-
-    public Employee (String name, String role, Double salary, LocalDate date) {
-        this.name = name;
-        this.role = role;
-        this.salary = salary;
-        this.date = date;
-    }
-
-    public boolean cadastrarFuncionario () {
-        try {
-            Connection conn = MySQLConnection.getConnection();
-            EmployeeRepository emp = new EmployeeRepository(conn);
-            
-            emp.create(this);
-
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
     }
 }
