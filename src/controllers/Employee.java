@@ -19,6 +19,13 @@ public class Employee {
     }
 
     public boolean cadastrarFuncionario () {
+        if (
+            this.date.isAfter(LocalDate.now()) ||
+            this.salary <= 0
+        ) {
+            return false;
+        }
+
         try {
             Connection conn = MySQLConnection.getConnection();
             EmployeeRepository emp = new EmployeeRepository(conn);
