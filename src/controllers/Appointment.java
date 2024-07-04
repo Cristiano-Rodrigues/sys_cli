@@ -57,6 +57,8 @@ public class Appointment {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
+        } finally {
+            MySQLConnection.closeConnection();
         }
     }
 

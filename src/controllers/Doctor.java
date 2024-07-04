@@ -26,6 +26,8 @@ public class Doctor extends Employee {
             return true;
         } catch (Exception e) {
             return false;
+        } finally {
+            MySQLConnection.closeConnection();
         }
     }
 

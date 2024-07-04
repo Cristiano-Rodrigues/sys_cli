@@ -30,15 +30,13 @@ public class MySQLConnection {
         } catch (SQLException e) {
             System.out.println("Conexao nao foi bem sucedida");
             return null;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
         }
     }
 
     public static boolean closeConnection () {
         try {
             connection.close();
+            connection = null;
             return true;
         } catch (SQLException e) {
             return false;
