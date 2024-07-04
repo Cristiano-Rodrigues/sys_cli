@@ -1,18 +1,19 @@
-import java.sql.Connection;
-import controllers.Specialty;
-import repositories.MySQLConnection;
-import repositories.SpecialtyRepository;
+import java.time.LocalDateTime;
+import controllers.Appointment;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Connection conn = MySQLConnection.getConnection();
-        SpecialtyRepository specRepository = new SpecialtyRepository(conn);
-        Specialty spec = specRepository.getById(4);
+        Appointment app = new Appointment(
+            "em espera",
+            LocalDateTime.of(2024, 10, 10, 12, 0)
+        );
 
-        if (spec != null) {
-            System.out.println("Nome: " + spec.getName() + ", preco: " + spec.getPrice());
+        boolean scheduled = app.agendarConsulta(1, 4, 1);
+
+        if (scheduled) {
+            System.out.println("Consulta marcada");
         } else {
-            System.out.println("Algo correu mal");
+            System.out.println("Consulta nao marcada");
         }
     }
 }
