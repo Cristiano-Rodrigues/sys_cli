@@ -1,19 +1,13 @@
-import java.time.LocalDateTime;
-import controllers.Appointment;
+import controllers.Invoice;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Appointment app = new Appointment(
-            "em espera",
-            LocalDateTime.of(2024, 10, 10, 12, 0)
-        );
+        Invoice invoice = new Invoice(false, 150000);
 
-        boolean scheduled = app.agendarConsulta(1, 4, 1);
-
-        if (scheduled) {
-            System.out.println("Consulta marcada");
+        if (invoice.cadastrarFactura(1)) {
+            System.out.println("Factura cadastrada com sucesso!");
         } else {
-            System.out.println("Consulta nao marcada");
+            System.out.println("Factura nao cadastrada!");
         }
     }
 }
