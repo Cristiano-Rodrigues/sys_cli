@@ -3,6 +3,7 @@ package repositories;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class MySQLConnection {
     private static Connection connection = null;
@@ -14,9 +15,11 @@ public class MySQLConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost/sys_cli";
-            String username = "root";
-            String password = "";
+            Dotenv dotenv = Dotenv.load();
+
+            String url = dotenv.get("DB_URL");
+            String username = dotenv.get("DB_USER");
+            String password = dotenv.get("DB_PASS");
 
             connection = DriverManager.getConnection(url, username, password);
 
@@ -26,6 +29,9 @@ public class MySQLConnection {
             return null;
         } catch (SQLException e) {
             System.out.println("Conexao nao foi bem sucedida");
+            return null;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             return null;
         }
     }
