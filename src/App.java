@@ -1,13 +1,15 @@
-import controllers.Invoice;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
 
+
+/**
+ *
+ * @author vladr
+ */
 public class App {
-    public static void main(String[] args) throws Exception {
-        Invoice invoice = new Invoice(false, 370000);
 
-        if (invoice.cadastrarFactura(1)) {
-            System.out.println("Factura cadastrada com sucesso!");
-        } else {
-            System.out.println("Factura nao cadastrada!");
-        }
+    public static void main(String[] args) {
+        new Login().setVisible(true);
     }
 }
