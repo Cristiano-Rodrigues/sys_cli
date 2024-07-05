@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import repositories.EmployeeRepository;
 import repositories.MySQLConnection;
 import org.jasypt.util.text.BasicTextEncryptor;
-
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class Employee {
