@@ -42,7 +42,7 @@ public class DoctorRepository {
 
             String number = rs.getString("numero");
 
-            return new Doctor("", "", 0.0, LocalDate.now(), number);
+            return new Doctor("", "", "", "", 0.0, LocalDate.now(), number);
         } catch (SQLException e) {
             return null;
         }

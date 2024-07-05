@@ -9,8 +9,8 @@ import repositories.MySQLConnection;
 public class Doctor extends Employee {
     String crm;
 
-    public Doctor(String name, String role, Double salary, LocalDate date, String crm) {
-        super(name, role, salary, date);
+    public Doctor(String name, String username, String password, String role, Double salary, LocalDate date, String crm) {
+        super(name, username, password, role, salary, date);
         this.crm = crm;
     }
     
@@ -21,6 +21,11 @@ public class Doctor extends Employee {
             DoctorRepository doc = new DoctorRepository(conn);
             
             int empId = emp.create(this);
+
+            if (empId == -1) {
+                return false;
+            }
+
             doc.create(empId, crm);
 
             return true;
